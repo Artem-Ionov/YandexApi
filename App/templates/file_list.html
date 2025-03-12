@@ -14,7 +14,7 @@
             {% for file in files %}
             <tr>
                 <td>{{file.name}}</td>
-                <td><a href="">Скачать</a></td>
+                <td><a href="{% url 'download_file' file.public_key %}">Скачать</a></td>
             </tr>
             {% endfor %}
         </table>
