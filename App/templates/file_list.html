@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Мой Яндекс диск</title>
+    </head>
+    <body>
+        <h1>Список файлов на Яндекс диске:</h1>
+        <table>
+            <tr>
+                <th>Название файла</th>
+                <th>Ссылка для загрузки</th>
+            </tr>
+            {% for file in files %}
+            <tr>
+                <td>{{file.name}}</td>
+                <td><a href="">Скачать</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
