@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('App.urls'))
+    path('', include('App.urls')),                          # Включение списка url из указанной директории
+    path('accounts/', include('django.contrib.auth.urls'))  # Включение авторизации
 ]
