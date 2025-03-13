@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}                                               <!--Расширяем базовый шаблон-->
 
 {% block content %}
     <h1>Список файлов на Яндекс диске:</h1>
@@ -10,8 +10,8 @@
         </tr>
         {% for file in files %}
         <tr>
-            <td>{{file.name}}</td>
-            <td><a href="{% url 'download_file' file.public_key %}">Скачать</a></td>
+            <td>{{file.name}}</td>                                      <!--Выводим имя файла-->
+            <td><a href="{% url 'download_file' file.public_key %}">Скачать</a></td><!--Передаём public_key в url при нажатии на ссылку-->
         </tr>
         {% endfor %}
     </table>

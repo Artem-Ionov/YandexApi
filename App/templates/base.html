@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <meta charset="UTF-8">
-        <title>Мой Яндекс диск</title>
-        {% load static %}
+        <meta charset="UTF-8">                                      <!--Кодировка-->
+        <title>Мой Яндекс диск</title>                              <!--Заголовок страницы-->
+        {% load static %}                                           <!--Подключение CSS-->
         <link rel="stylesheet" href="{% static 'Styles.css' %}">
     </head>
     <body>
-        <div class="navi">
+        <div class="navi">                                          <!--Блок навигации-->
             {% block navi %}
                 <ul>
-                {% if user.is_authenticated %}
-                    <li>Пользователь: {{user.get_username}}</li>
+                {% if user.is_authenticated %}                      <!--Если авторизован, отображаем имя пользователя-->
+                    <li>Пользователь: {{user.get_username}}</li>    <!--и кнопка выйти-->
                     <li><form method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
                     <input type="submit" value="Выйти"></form></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Войти</a></li>
+                    <li><a href="{% url 'login' %}">Войти</a></li>  <!--Если нет - кнопка войти-->
                 {% endif %}
                 </ul>
             {% endblock %}
         </div>
         <div class="content">
-            {% block content %}{% endblock %}
+            {% block content %}{% endblock %}                       <!--Блок содержимого-->
         </div>
     </body>
 </html>
