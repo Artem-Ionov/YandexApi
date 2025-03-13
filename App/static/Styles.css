@@ -1,0 +1,31 @@
+html{
+    background-color: beige;
+}
+
+.navi{
+    float: left;
+    width: 20%;
+    margin-top: 5%;
+}
+
+.content{
+    float: right;
+    width: 75%;
+}
+
+table{
+    width: 50%;
+}
+
+ul{
+    list-style: none;
+}
+
+th, td, li, p{
+    font-size: 20px;
+}
+
+th, td{
+    height: 30px;
+    text-align: center;
+}
