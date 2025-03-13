@@ -20,11 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^edn)&*b6&1t6^r%as%u4r%d$=#*r%e(=xct8p$-5qdrg4*jj-'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Сохраняем SECRET_KEY и DEBUG в переменных окружения
+SECRET_KEY = os.environ.get('SECRET_KEY', default='secretKey')
+DEBUG = str(os.environ.get('DEBUG')).lower() == 'true'
 
 ALLOWED_HOSTS = []
 
@@ -38,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'App.apps.AppConfig',
+    'App.apps.AppConfig',                       # Регистрируем приложение
 ]
 
 MIDDLEWARE = [
@@ -56,7 +54,7 @@ ROOT_URLCONF = 'YandexApi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],                 # Добавляем путь для поиска шаблонов авторизации
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -107,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Samara'
+TIME_ZONE = 'Europe/Samara'                             # Устанавливаем свою временную зону
 
 USE_I18N = True
 
@@ -124,4 +122,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL='/'
+LOGIN_REDIRECT_URL='/'                                  # Указываем путь перенаправления после авторизации
