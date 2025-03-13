@@ -7,7 +7,16 @@
     <body>
         <div class="navi">
             {% block navi %}
-
+                <ul>
+                {% if user.is_authenticated %}
+                    <li>Пользователь: {{user.get_username}}</li>
+                    <li><form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                    <input type="submit" value="Выйти"></form></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Войти</a></li>
+                {% endif %}
+                </ul>
             {% endblock %}
         </div>
         <div class="content">
